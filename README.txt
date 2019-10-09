@@ -33,7 +33,6 @@ front-end-test-master/
 |--README.txt
 
 
-
 The home page is the index.html, with the toolbar, you can link to other pages to see the details.
 Clicking 'Carinfo' botton, will go to the reviews.html. the rotator will show pictures of the vehicle rotating every 3 seconds.
 Clicking 'Moredetial' botton，will go to the deatil.html, there is tabbed content below, all the tab will show the details about the vehicle
