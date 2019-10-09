@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<html lang="en">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  	<title>Front End Coding Test</title>
+
+	<meta name="description" content="Carloans Canada">
+	<meta name="keywords" content="HTML,CSS,XML,JavaScript">
+	<meta name="author" content="Evan xia">
+	  <!-- CSS  -->
+  	<link rel="stylesheet" type="text/css" href="../css/style.css" />
+
+<style>
+	body {font-family: Arial;}
+
+	.tab {
+	  overflow: hidden;
+	  border: 1px solid #ccc;
+	  background-color: #f1f1f1;
+	}
+
+	.tab button {
+	  background-color: inherit;
+	  float: left;
+	  border: none;
+	  outline: none;
+	  cursor: pointer;
+	  padding: 14px 16px;
+	  transition: 0.3s;
+	  font-size: 17px;
+	}
+
+	.tab button:hover {
+	  background-color: #ddd;
+	}
+
+	.tab button.active {
+	  background-color: #ccc;
+	}
+
+	.tabcontent {
+	  display: none;
+	  padding: 6px 12px;
+	  border: 1px solid #ccc;
+	  border-top: none;
+	}
+	p.hide{display: none;
+	}
+</style>
+</head>
+<body>
+	<div class="head"></div>
+	<ul class=daohang>
+			<li><a href="index.html">Home</a></li>
+			<li><a href="reviews.html">Car Info</a></li>
+			<li><a href="detail.html">More Detail</a></li>
+			<li><a href="contactus.html">Contact Us</a></li>
+		</ul>
+    <br><br>
+    <p id="demo"></p>
+    <h2>Search:</h2>
+	<input id="key-word" type="text" class="key-word" value="enter" />
+	<button id="search-button">Search</button>
+	<input type="submit" value="Occurance" onclick="searchOccurence()"/>
+	<button onClick="document.location.reload()">Refresh</button>
+
+
+	<h2>Results:</h2>
+	<p id="result">Found 0 occurances of the word "enter" in the below text.</p>
+
+	<hr/>
+	
+<script type="text/javascript">
+	function searchOccurence() {
+		event.preventDefault();
+		var word = document.getElementById('key-word').value;
+		var content = document.getElementById('search_text').textContent;
+		// var temp = '/\\b(' + word + ')\\b';
+		var regex= new RegExp("\\b(" + word + ")\\b", 'gi');
+		var res = content.match(regex);
+		if (!res) {
+			res = [];
+		}
+		document.getElementById('result').innerHTML ='Found ' + res.length + ' occurances of the word "' + word + '" in the below text.';
+	}
+</script>
+
+
+<script>
+	var t=0;
+	function $(id){
+		return document.getElementById(id)
+		}
+		var putWordsObj = $('key-word');
+		putWordsObj.onfocus = function(){
+		if(this.value == 'enter keywords')this.value='';
+		}
+		putWordsObj.onblur = function(){
+		if(!this.value)this.value='enter keywords';
+		}
+
+		$('search-button').onclick = function(){
+		var content = $('content').innerHTML;
+		var keyWord = $('key-word').value;
+		content = search_do(content, keyWord);
+		$('content').innerHTML = content;
+
+	}
+	function search_do(content,keyWord){
+		var keyWordArr = keyWord.replace(/[\s]+/g,' ').split(' ');
+		var re;
+		for(var n = 0; n < keyWordArr.length; n ++) {
+
+		re = new RegExp(""+keyWordArr[n]+"","gmi");
+		content = content.replace(re,'<span style="color:#0f0;background-color:#ff0">'+keyWordArr[n]+'</span>');
+		t++;
+	 	}
+	return content;
+	}
+
+
+	</script>
+
+
+    <br><br>
+
+	<div class="tab" >
+	  <button class="tablinks" onclick="openDetail(event, 'Performance')" id="defaultOpen">Performance</button>
+	  <button class="tablinks" onclick="openDetail(event, 'Technical')">Technical</button>
+	  <button class="tablinks" onclick="openDetail(event, 'Features')">Features</button>
+	  <button class="tablinks" onclick="openDetail(event, 'Accessories')">Accessories</button>
+	</div>
+	<br><br>
+<div id="content" >
+	<div id="Performance" class="tabcontent">
+	  <h2>Performance</h2>
+	  <h3>Power. Or more power.</h3>
+	  <p>Featuring a lightweight and powerful TFSI engine, the 2.0 boasts a strong 248 HP.</p>
+	  <p>For more demanding drivers, a supercharged V6 offers 329 HP.</p>
+	  <p>The choice is yours.</p>
+	  <h3>Smooth moves.</h3>
+	  <p>With a ratio to suit every situation, the snappy eight-speed Tiptronic delivers the ultimate in driving dynamics.</p>
+	  <p>With manual control and steering-wheel paddle shifts, the gearbox is always ready to thrill.</p>
+	  <h3>Let’s ride.</h3>
+	  <p>Tailor your driving experience with the available air suspension.</p> 
+	  <p>A variety of modes and ride heights ensure the Q7 performs the way you want.</p>
+	  <p>Four-wheel steering ensures this SUV is nimble on its feet.</p>
+	</div>
+
+	<div id="Technical" class="tabcontent">
+	  <h2>Technical</h2>
+	  <h3>The mastermind.</h3>
+	  <p>Assistance and security are at the core of Audi connect.</p>
+	  <p>Take advantage of fully integrated and seamless assistance tools, including intelligent navigation, remote vehicle services, car finder, and roadside assistance.</p>
+	  <p>Experience peace-of-mind with security features, including emergency call and stolen vehicle locator. (Optional add-on feature.)</p>
+	  <h3>A safe space.</h3>
+	  <p>Convenience and safety are at the core of Audi driver assistance.</p>
+	  <p>The optional adaptive cruise control with Stop&Go not only adapts your speed to maintain a safe distance from the car in front,</p>
+	  <p>it can also slow you to a complete stop and resume the pre-set speed once traffic moves.</p>
+	  <h3>Don’t look down.</h3>
+	  <p>No need to look away from the road. </p>
+	  <p>With the optional head-up display, a full-colour projection displays important information and indications onto the windshield for quick driver reference. </p>
+	  <p>Speed, navigation, and more are projected in clear view, so you can keep your eyes on the road.</p>
+	</div>
+
+	<div id="Features" class="tabcontent">
+	  <h2>Features</h2>
+	  <h3>Rugged and handsome.</h3>
+	  <p>On top of being physically lighter, the Q7 is also designed to look it.</p> 
+	  <p>Perfectly chiselled lines, chunky wheel arches, and quattro side script draw admiring looks.</p>
+	  <h3>Big is bold.</h3>
+	  <p>Standard 19-inch wheels fill the wheel arches perfectly. </p>
+	  <p>For the style conscious, a selection of 20- and 21-inch wheels take the visual appeal of the Q7 to a new level.</p>
+	  <h3>A dark edge.</h3>
+	  <p>Increase the aggression further with the optional Black Optics package.</p>
+	  <p>The black rear diffuser, window surrounds, roof bars, and grille add a subtle hint of menace.</p>
+	  <h3>A team player.</h3>
+	  <p>The flexible Q7 is ready for any situation.</p>
+	  <p>The spacious cabin offers generous space for up to seven passengers, while folding the seats opens up 2075 litres of trunk space.</p>
+	  <h3>A five-star experience.</h3>
+	  <p>For the ultimate VIP experience, choose the optional Luxury package.</p>
+	  <p>The individually contoured driver and passenger seats are wrapped in beautiful Valcona leather and offer heating, ventilation, and massage options.</p>
+	  <h3>A tailored look.</h3>
+	  <p>Your car is a reflection of your personal style.</p>
+	  <p>Rich Valcona leather in Murillo brown, paired with grey Alcantara headliner and brushed aluminum and sycamore inlays create an interior like no other.</p>
+	</div>
+
+	<div id="Accessories" class="tabcontent">
+	  <h2>Accessories</h2>
+	  <h3>Step inside the world of Audi.</h3>
+	  <p>The entry LED beam projects the Audi rings onto the ground when you open the front doors. </p>
+	  <p>This feature not only provides additional light when getting into the car but also creates an individual sporty look. </p>
+	  <p>The entry LED is a further development of the standard entry lights.</p>
+	  <h3>We've got you covered.</h3>
+	  <p>The Universal Traffic Recorder, with both front and rear cameras, can record various driving situations. </p>
+	  <p>Even when parked, the system is integrated with the car's radar technology.</p>
+	  <p>Asleep until needed, the system can record activity the sensors detect, ensuring complete protection for your Audi.</p>
+	  <h3>Step up.</h3>
+	  <p>The Audi running boards not only make entry and exit easier, they add a dash of style to your vehicle too.</p>
+	  <h3>Seasons change but style doesn't.</h3>
+	  <p>With the Audi winter complete wheels in 5-spoke star design with Pirelli Scorpion Winter wheels, you will be ready to tackle anything a Canadian winter can offer.</p>
+	</div>
+</div>
+
+
+
+
+<div id="search_text">
+		<p class="hide">
+			Performance.Power. Or more power.Featuring a lightweight and powerful TFSI engine, the 2.0 boasts a strong 248 HP.For more demanding drivers, a supercharged V6 offers 329 HP.The choice is yours.Smooth moves.With a ratio to suit every situation, the snappy eight-speed Tiptronic delivers the ultimate in driving dynamics.With manual control and steering-wheel paddle shifts, the gearbox is always ready to thrill.Let’s ride.Tailor your driving experience with the available air suspension. A variety of modes and ride heights ensure the Q7 performs the way you want.Four-wheel steering ensures this SUV is nimble on its feet.Technical.The mastermind.Assistance and security are at the core of Audi connect.Take advantage of fully integrated and seamless assistance tools, including intelligent navigation, remote vehicle services, car finder, and roadside assistance.Experience peace-of-mind with security features, including emergency call and stolen vehicle locator.(Optional add-on feature.)A safe space.Convenience and safety are at the core of Audi driver assistance.The optional adaptive cruise control with Stop&Go not only adapts your speed to maintain a safe distance from the car in front,it can also slow you to a complete stop and resume the pre-set speed once traffic moves.Don’t look down.No need to look away from the road.With the optional head-up display, a full-colour projection displays important information and indications onto the windshield for quick driver reference.Speed, navigation, and more are projected in clear view, so you can keep your eyes on the road.Features.Rugged and handsome.On top of being physically lighter, the Q7 is also designed to look it.Perfectly chiselled lines, chunky wheel arches, and quattro side script draw admiring looks.Big is bold.Standard 19-inch wheels fill the wheel arches perfectly.For the style conscious, a selection of 20- and 21-inch wheels take the visual appeal of the Q7 to a new level.A dark edge.Increase the aggression further with the optional Black Optics package.The black rear diffuser, window surrounds, roof bars, and grille add a subtle hint of menace.A team player.The flexible Q7 is ready for any situation.The spacious cabin offers generous space for up to seven passengers, while folding the seats opens up 2075 litres of trunk space.A five-star experience.For the ultimate VIP experience, choose the optional Luxury package.The individually contoured driver and passenger seats are wrapped in beautiful Valcona leather and offer heating, ventilation, and massage options.A tailored look.Your car is a reflection of your personal style.Rich Valcona leather in Murillo brown, paired with grey Alcantara headliner and brushed aluminum and sycamore inlays create an interior like no other.Accessories.Step inside the world of Audi.The entry LED beam projects the Audi rings onto the ground when you open the front doors.This feature not only provides additional light when getting into the car but also creates an individual sporty look.The entry LED is a further development of the standard entry lights.We've got you covered.The Universal Traffic Recorder, with both front and rear cameras, can record various driving situations.Even when parked, the system is integrated with the car's radar technology.Asleep until needed, the system can record activity the sensors detect, ensuring complete protection for your Audi.Step up.The Audi running boards not only make entry and exit easier, they add a dash of style to your vehicle too.Seasons change but style doesn't.With the Audi winter complete wheels in 5-spoke star design with Pirelli Scorpion Winter wheels, you will be ready to tackle anything a Canadian winter can offer.
+		</p>
+	</div>
+
+
+	<footer style="color: black" class="footer"><br>Copyright@ Evan Xia.
+	<p>All the ads resources from Audi official website ： https://www.audi.ca/ca/web/en.html</p>      
+	</footer>
+
+<script>
+	function openDetail(evt, detailName) {
+	  var i, tabcontent, tablinks;
+	  tabcontent = document.getElementsByClassName("tabcontent");
+	  for (i = 0; i < tabcontent.length; i++) {
+	    tabcontent[i].style.display = "none";
+	  }
+	  tablinks = document.getElementsByClassName("tablinks");
+	  for (i = 0; i < tablinks.length; i++) {
+	    tablinks[i].className = tablinks[i].className.replace(" active", "");
+	  }
+	  document.getElementById(detailName).style.display = "block";
+	  evt.currentTarget.className += " active";
+	}
+
+	document.getElementById("defaultOpen").click();
+</script>
+</body>
+</html>

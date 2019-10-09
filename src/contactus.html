@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<html lang="en">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  	<title>Front End Coding Test</title>
+
+	<meta name="description" content="Carloans Canada">
+	<meta name="keywords" content="HTML,CSS,XML,JavaScript">
+	<meta name="author" content="Evan xia">
+	  <!-- CSS  -->
+  	<link rel="stylesheet" type="text/css" href="../css/style.css" />
+
+
+</head>
+<body>
+	<div class="head"></div>
+	<ul class=daohang>
+			<li><a href="index.html">Home</a></li>
+			<li><a href="reviews.html">Car Info</a></li>
+			<li><a href="detail.html">More Detail</a></li>
+			<li><a href="contactus.html">Contact Us</a></li>
+		</ul>
+    <br><br>
+    	
+	<h2 align="center" style="color: black">Contact Us</h2>
+	<p align="center">Questions? We want to hear from you! Please complete the following form selecting the location closest to you and someone from our team will be in touch with you within 24 hours!</p>
+
+
+	<form align="center" className='validate' style="color: black">
+	<br /><br />
+
+	<label>First Name </label>
+	<input
+       	id="outlined-name"
+       	label="First Name"
+       	margin="normal"
+       	ref="fn"
+       	variant="outlined"
+		placeholder="First name"
+		required
+	/>
+	<span className='err-msg'></span>
+	<br /><br />
+
+	<label>Last Name </label>
+   <input
+       	id="outlined-name"
+      	label="Last Name"
+      	margin="normal"
+      	ref="ln"
+      	variant="outlined"
+		placeholder="Last name"
+		required
+   	/>
+	<br /><br />
+
+	<label>Email Address </label>
+   	<input
+       	id="outlined-name"
+       	label="Email*"
+		type="email"
+		name="email"
+		autoComplete="email"
+       	margin="normal"
+       	ref="email"
+       	variant="outlined"
+		placeholder="Email address"
+		required
+   	/>
+	<br /><br />
+
+	<label>Telephone </label>
+   	<input
+       	id="outlined-name"
+       	label="Telephone"
+       	margin="normal"
+       	ref="tel"
+       	variant="outlined"
+		placeholder="(000)000-0000"
+	/>
+	<br /><br />
+
+	<label>How can we help you? </label>
+	<br /><br />
+	<textarea rows="4" cols="30">
+		
+	</textarea>
+	<br /><br />
+        
+	
+	<Button color="primary" margin="dense"  variant="outlined" onClick={this.handleSubmit.bind(this)}>Submit</Button>
+    </form>
+
+
+	<footer style="color: black" class="footer"><br>Copyright@ Evan Xia </footer>
+</body>
+</html>
